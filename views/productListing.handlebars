@@ -1,0 +1,27 @@
+
+
+
+<section class="section-product">
+    <h2>Our Products</h2>
+
+    <p class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam aliquid accusantium debitis recusandae voluptatibus nostrum obcaecati laudantium repudiandae praesentium maxime, voluptates sed eius repellat in natus asperiores consequatur. Nostrum, dolorem.</p>
+
+     <section class="row section-product__row">
+        {{!-- for loop  data i the name of the variable we used in server.js
+--}}    {{#each data}}
+            <article class="product">
+    
+                <img src="/images/house_interior/sofa/{{this.imgPath}}" alt="computer image" class="product__image">
+
+                <h3 class="product__title">{{this.title}}</h3>
+                
+                <p class="product__description">{{this.description}}</p>
+
+                <p>{{this.price}}</p>
+
+                <button value="submit" class="button btn-add-cart">Add to cart</button>
+
+            </article> <!-- product section-product__row-->
+        {{/each}}
+    </section> <!-- row-->
+</section> <!--section-product-->

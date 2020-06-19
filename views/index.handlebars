@@ -1,0 +1,49 @@
+
+<section class="section-promotional">
+    <h2 class="text-center hidden">Promotional</h2>
+    <img src="/images/sale_image.jpg" alt="50% off promotional image" class="promotional_img">
+</section>  <!--section-promotional-->
+
+<section class="section-featured">
+    <h2 class="text-center text-capitalize">featured</h2>
+    <section class="row section-product__row">
+    {{#each featuredproducts}}
+            <article class="product">
+    
+                <img src="/images/house_interior/sofa/{{this.imgPath}}" alt="computer image" class="product__image">
+
+                <h3 class="product__title">{{this.title}}</h3>
+                
+                <p class="product__description">{{this.description}}</p>
+
+                <p>{{this.price}}</p>
+
+                <button value="submit" class="button btn-add-cart">Add to cart</button>
+
+            </article> <!-- product -->
+        {{/each}}
+    </section> <!-- row  section-product__row-->
+</section>
+
+<section class="section-category">
+
+    <h2 class="text-center">Category</h2>
+
+    <p class="content">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A fugit ab dolor cupiditate quidem. Numquam fuga, cumque maiores tempore autem rerum quod sit quisquam vitae placeat quis nostrum natus blanditiis.
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, fugiat ut. Rerum autem a optio cum vel? Distinctio adipisci magnam, quo illum inventore, id sint repellat dolores minus nulla dolorum?
+    </p>
+
+
+    <section class="row section-category-row">
+        {{#each data}}
+            <article class="category">
+    
+                <a href="/productListing"><img src="/images/category/{{this.imgPath}}" alt="house interior image" class="product__image"></a>
+
+                <h3 class="product__title"><a href="/productListing" class="a-link">{{this.title}}</a></h3>
+
+            </article> <!-- category-->
+        {{/each}}
+    <section> <!--section-category-row  -->
+</section> <!-- category-->

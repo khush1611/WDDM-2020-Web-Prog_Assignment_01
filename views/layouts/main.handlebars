@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+
+    <link rel="shortcut icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/reset.css">
+
+    <link rel="stylesheet" href="/css/reusable_class.css">
+   
+    <link rel="stylesheet" href="/css/default.css">
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="header-wrapper">
+        {{!-- <img src="/images/delivery_truck.png" alt="Delivery Truck" class="delivery_truck_image"> --}}
+        <header class="header">
+            <h1 class="hidden">Assignment 1 setup</h1>
+            
+            <nav class="navigation row">
+                
+                <img src="/images/amazon_logo.png" alt="Amazon Logo" class="navigation__website_logo">
+
+                <ul class="navigation__ul-listing row">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/comingSoon" class="text-capitalize">deal store</a></li>
+                    <li><a href="/comingSoon" class="text-capitalize">best sellers</a></li>
+                    <li><a href="/productListing" class="text-capitalize">products</a></li>
+                    <li><a href="/login" class="text-capitalize">login</a></li>
+                    <li><a href="/signUp" class="text-capitalize">sign up</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div> <!-- header-wrapper-->
+    <main class="main">
+            {{{body}}}
+    </main>
+
+    <footer class="footer">
+        <section class="footer-section">
+            <div class="social-media">
+                <ul class="social-media__list row">
+                    <li>
+                        <a href="#" target="_blank" aria-label="A link to facebook profile">
+                        <i class="fab fa-facebook-square social-media__icon" title="Click to view facebook profile"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.instagram.com/my_fitsquad/?hl=en" target="_blank" aria-label="A link to instagram profile">
+                        <i class="fab fa-instagram social-media__icon" title="Click to view instagram profile"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

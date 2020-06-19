@@ -1,0 +1,87 @@
+/*`````````````````````````````*/
+/*header*/
+/*`````````````````````````````*/
+ .header-wrapper{ 
+    background-color: cornsilk;
+} 
+
+.delivery_truck_image{ 
+    position: absolute;
+    top:25em;
+    left: 60em;
+}
+
+.header{ padding: 2em;}
+
+.navigation{}
+
+.navigation__website_logo{ max-width: 10em;}
+
+.navigation__ul-listing{ margin-left: auto;}
+
+.navigation__ul-listing li{ margin: 0 2em; }
+
+.navigation__ul-listing a{ color: #686666; font-size: 1.2em;}
+
+.navigation__ul-listing a:hover{ color: #000000; font-size: 1.2em;}
+
+/*`````````````````````````````*/
+/*MAIN*/
+/*`````````````````````````````*/
+.main{ background-color:;}
+
+.section-promotional{ text-align: center;}
+.promotional_img{ text-align: center; width: 100%; height: 37em;}
+
+
+/*`````````````````````````````*/
+/*FEATURED*/
+/*`````````````````````````````*/
+.section-featured{ max-width: 90em; margin: 0 auto; text-align: center; padding: 3em; }
+
+/*`````````````````````````````*/
+/*CATEGORIES*/
+/*`````````````````````````````*/
+.section-category{ max-width: 90em; margin: 0 auto; text-align: center; padding: 3em;}
+.section-category-row{ margin: 2em 0em; }
+
+.category{ max-width: 80em; margin: 0 auto;}
+
+/*`````````````````````````````*/
+/*PRODUCT*/
+/*`````````````````````````````*/
+.section-product{ max-width: 90em; margin: 0 auto; text-align: center; padding: 3em;}
+
+.section-product__row{ margin: 2em 0em;}
+
+.product { max-width: 80em; margin: 0 auto; }
+.product__image{ max-width: 20em; height:15em; border-radius: 0.3em;}
+.product__title{ font-size: 1.5em; text-align: center;}
+.product__description{ }
+
+
+
+/*`````````````````````````````*/
+/*LOGIN*/
+/*`````````````````````````````*/
+.section-form{ 
+    width: 50em; 
+    margin: 0 auto;
+    padding: 2em;
+}
+
+/*`````````````````````````````*/
+/*FOOTER*/
+/*`````````````````````````````*/
+/* .footer{   background-color: var(--color-primary); } */
+.footer-section{ 
+    border-top: 0.1em solid #818181;
+    padding: 4em;
+    margin: 4em 4em 0 4em;
+}
+.social-media{ width: 5em; margin: 0 auto;}
+.social-media__icon{ font-size: 2em; color: var(--color-secondary);}
+
+
+.coming-soon{ font-size: 3em; text-align: center; padding: 1em 0 5em 0;}
+
