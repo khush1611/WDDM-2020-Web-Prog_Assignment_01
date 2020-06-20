@@ -79,7 +79,9 @@
     padding: 4em;
     margin: 4em 4em 0 4em;
 }
-.social-media{ width: 5em; margin: 0 auto;}
+.footer_website_logo{ width: 3em;height: 2em;}
+.foot_navigation{ }
+.social-media{ width: 5em; margin: 0 auto; margin-top: 2em;}
 .social-media__icon{ font-size: 2em; color: var(--color-secondary);}
 
 

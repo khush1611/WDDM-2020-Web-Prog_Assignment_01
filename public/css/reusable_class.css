@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~*/
 /* Common classes   */
 /*~~~~~~~~~~~~~~*/
-.row{ display: flex;  justify-content: space-between;}
+.row{ display: flex;  justify-content: space-between; flex-wrap: wrap;}
 .column{ display: flex; flex-direction: column;}
 .col-equal-3{ flex-basis: calc(100% / 3);}
 .col-equal-5{ flex-basis: calc(100% / 5);}

@@ -24,7 +24,7 @@ const product = {
             title: "Lavender Sofa",
             description: "Lorem Ipsum is simply dummy text",
             price: "$ 900",
-            featured: false,
+            featured: true,
             imgPath: "sofa_3.jpg"
         });
 
