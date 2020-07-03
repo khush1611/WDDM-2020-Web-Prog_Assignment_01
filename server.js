@@ -9,7 +9,6 @@ const app = express();
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-
 app.use(express.static("public"))
 
 app.get("/",(req, res)=>{
@@ -26,8 +25,7 @@ app.get("/productListing",(req, res)=>{
         // product is name of the variable we declared above.
         // const product
         //product listing injecting array call data here
-        data: product.getAllProducts()
-        
+        data: product.getAllProducts()   
     })
 });
 
