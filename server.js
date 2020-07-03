@@ -1,5 +1,6 @@
 const express =  require("express");
 const exphbs  = require('express-handlebars');
+const bodyParser = require('body-parser');
 // ./ to tell the browser that this is not third party package. in the above syntax we didnt mention cause its a third party package
 // local module build by us
 const product = require("./models/product");
@@ -52,6 +53,27 @@ app.get("/signup",(req, res)=>{
         title: "signup"
     })
 });
+
+app.post('/login-form',(req,res)=>{
+
+    const varError =[];
+
+    if(req.body.username == ""){
+        varError.push("you must enter a value")
+    }
+    if(req.body.password == ""){
+        varError.push("you must enter a value")
+    }
+    if(varError.lenght > 0){
+        res.render("login", {
+            title: "login",
+            errorMessages: varError
+        });
+    }
+    else{
+        res.redirect("/");
+    }
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{
