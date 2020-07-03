@@ -1,12 +1,15 @@
 /* media queries to make the website responsive*/
 @media only screen and (max-width: 1100px){
     .hamburger-menu{ display: block !important; }
-
     .navigation__ul-listing{ display: none !important;}
-
     .foot_nav{ display: none !important;}
 }
 
+
+@media only screen and (max-width: 500px){
+    .section-form{ width: 99% !important;  padding: 1em !important; }
+}
+}
 @media only screen and (max-width: 450px){
     .header{ padding: 1em !important;}
     .navigation__website_logo{ display: none !important;}
@@ -15,6 +18,7 @@
     .content{ text-align: justify !important;}
     .section-category{ padding: 1em !important; text-align: justify !important;}
     .hamburger-menu{ width: 2em !important;}
+    .section-form{ width: 99% !important;  padding: 1em !important; }
 }
 @media only screen and (max-width: 350px){
     .coming-soon{ font-size: 1em !important;}
