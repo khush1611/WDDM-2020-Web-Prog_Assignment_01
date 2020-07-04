@@ -12,6 +12,9 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(express.static("public"))
 
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
 app.get("/",(req, res)=>{
     res.render("index",{
         title: "Amazon",
@@ -54,17 +57,62 @@ app.get("/signup",(req, res)=>{
     })
 });
 
+//signup-form
+app.post('/signup-form',(req,res)=>{
+
+    const varError =[];
+    
+    if(req.body.name == ""){
+        varError.push("you must enter your name")
+    }
+
+    if(req.body.username == ""){
+        varError.push("you must enter username")
+    }
+
+    if(req.body.email == ""){
+        varError.push("you must enter email")
+    }
+
+    if(req.body.address == ""){
+        varError.push("you must enter address")
+    }
+
+    if(req.body.password == ""){
+        varError.push("you must choose password")
+    }
+
+    if(req.body.Cpassword == ""){
+        varError.push("your password doesnt match")
+    }
+
+    if(varError.length > 0){
+        res.render("signup", {
+            title: "signup",
+            errorMessages: varError
+        });
+    }
+    else{
+        res.redirect("/");
+    }
+})
+
+//login-form
 app.post('/login-form',(req,res)=>{
 
     const varError =[];
-
+    
     if(req.body.username == ""){
-        varError.push("you must enter a value")
+    console.log("true " + req.body.username);
+        varError.push("you must the username")
     }
+    //else{
+    //console.log("false " + req.body.username);
+    //}
     if(req.body.password == ""){
-        varError.push("you must enter a value")
+        varError.push("you must enter password")
     }
-    if(varError.lenght > 0){
+    if(varError.length > 0){
         res.render("login", {
             title: "login",
             errorMessages: varError
