@@ -8,6 +8,8 @@
 
 @media only screen and (max-width: 500px){
     .section-form{ width: 100% !important;  padding: 1em !important; }
+    .navigation__website_logo{ display: none !important;}
+    .navigation__website_logo--mobile-view{ display: block !important; }
 }
 }
 @media only screen and (max-width: 450px){
