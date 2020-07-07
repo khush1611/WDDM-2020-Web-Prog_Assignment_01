@@ -6,32 +6,32 @@
     <form action="/users/signup-form" class="form-login" method="POST">
         <div class="form-login__inputbox">
             <label for="name" class="text-capitalize">name</label>
-            <input type="text" id="name" name="name" class="form-login__input input_field" placeholder="Enter name">
+         <input type="text" id="name" name="name" class="form-login__input input_field" placeholder="Enter name" value="{{formValues.nameHolder}}">
         </div>
 
          <div class="form-login__inputbox">
             <label for="username" class="text-capitalize">Username</label>
-            <input type="text" id="username" name="username" class="form-login__input input_field" placeholder="Enter username">
+            <input type="text" id="username" name="username" class="form-login__input input_field" placeholder="Enter username" value="{{formValues.usernameHolder}}">
         </div>
 
         <div class="form-login__inputbox">
             <label for="email" class="text-capitalize">email</label>
-            <input type="email" id="email" name="email" class="form-login__input input_field" placeholder="Enter e-mail address">
+            <input type="email" id="email" name="email" class="form-login__input input_field" placeholder="Enter e-mail address" value="{{formValues.emailHolder}}">
         </div>
 
          <div class="form-login__inputbox">
             <label for="address" class="text-capitalize">address</label>
-            <input type="text" id="address" name="address" class="form-login__input input_field" placeholder="Enter home adress">
+            <input type="text" id="address" name="address" class="form-login__input input_field" placeholder="Enter home adress" value="{{formValues.addressHolder}}">
         </div>
 
         <div class="form-login__inputbox">
             <label for="password" class="text-capitalize">password</label>
-            <input type="password" id="password" name="password" class="form-login__input input_field" placeholder="Enter password">
+            <input type="password" id="password" name="Upassword" class="form-login__input input_field" placeholder="Enter password">
         </div>
 
         <div class="form-login__inputbox">
             <label for="Cpassword" class="text-capitalize">confirm password</label>
-            <input type="password" id="Cpassword" name="cpassword" class="form-login__input input_field" placeholder="Confirm password">
+            <input type="password" id="Cpassword" name="Cpassword" class="form-login__input input_field" placeholder="Confirm password">
         </div>
 
         <button value="submit" class="button">Submit</button>
