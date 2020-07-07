@@ -4,14 +4,17 @@
     .navigation__ul-listing{ display: none !important;}
     .foot_nav{ display: none !important;}
 }
-
+@media only screen and (max-width: 600px){
+    .promotional_img{  height: 25em !important;}
+    }
 
 @media only screen and (max-width: 500px){
+    .promotional_img{  height: 20em !important;}
     .section-form{ width: 100% !important;  padding: 1em !important; }
     .navigation__website_logo{ display: none !important;}
     .navigation__website_logo--mobile-view{ display: block !important; }
-}
-}
+    }
+
 @media only screen and (max-width: 450px){
     .header{ padding: 1em !important;}
     .navigation__website_logo{ display: none !important;}
