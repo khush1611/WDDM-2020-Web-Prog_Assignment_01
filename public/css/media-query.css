@@ -22,6 +22,8 @@
     .section-form{ width: 99% !important;  padding: 1em !important; }
 }
 @media only screen and (max-width: 350px){
+    .navigation__website_logo{ display: none !important;}
+    .navigation__website_logo--mobile-view{ display: block !important; }
     .section-form{ width: 100% !important; padding: 1em !important; }
     .coming-soon{ font-size: 1em !important;}
     .footer{ padding: 1em !important;}
