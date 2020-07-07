@@ -12,6 +12,8 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(express.static("public"))
 
+// this tells xpress to make form data available via req.body each req
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 
