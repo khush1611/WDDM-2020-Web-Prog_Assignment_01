@@ -123,7 +123,7 @@ router.post('/signup-form',(req,res)=>{
         // https://github.com/sendgrid/sendgrid-nodejs
         const sgMail = require('@sendgrid/mail');
 
-        sgMail.setApiKey("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");
+        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
         
         const msg = {
         to: email,
