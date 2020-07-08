@@ -26,7 +26,7 @@ app.use("/product",productController);
 app.use("/users",usersController);
 
 // webserver setup
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, ()=>{
 
     console.log('The webserver is up and running')
