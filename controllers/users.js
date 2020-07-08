@@ -13,15 +13,9 @@ function userNameValidation(uName){
 }
 
 //https://www.ocpsoft.org/tutorials/regular-expressions/password-regular-expression/
-// ^                                            Match the beginning of the string
-// (?=.*[0-9])                                  Require that at least one digit appear anywhere in the string
-// (?=.*[a-z])                                  Require that at least one lowercase letter appear anywhere in the string
-// (?=.*[A-Z])                                  Require that at least one uppercase letter appear anywhere in the string
-// (?=.*[*.!@$%^&(){}[]:;<>,.?~_+-=|\])        Require that at least one special character appear anywhere in the string
-// .{8,32}                                      The password must be at least 8 characters long, but no more than 32
-// $                                            Match the end of the string.
 function passwordValidation(pword){
     //const regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?~_+-=|\]).{8,32}$/;
+    //https://www.regextester.com/95029
     const regex = /^[A-Za-z0-9]+/;
     return regex.test(pword);
 }
@@ -40,14 +34,14 @@ router.post('/login-form',(req,res)=>{
     const {username, Upassword} = req.body;
 
     if(username == ""){
-    console.log("true " + username);
-        varError.push("you must the username")
+        //console.log("true " + username);
+        varError.push("To login, you must enter username")
     }
     //else{
     //console.log("false " + req.body.username);
     //}
     if(Upassword == ""){
-        varError.push("you must enter password")
+        varError.push("To login, you must enter password")
     }
     if(varError.length > 0){
         res.render("users/login", {
@@ -56,9 +50,9 @@ router.post('/login-form',(req,res)=>{
         });
     }
     else{
-        res.redirect("/");
+        res.redirect("/users/dashboard");
     }
-})
+});
 
 //singup 
 router.get("/signup",(req, res)=>{
@@ -83,11 +77,11 @@ router.post('/signup-form',(req,res)=>{
     //console.log(form);
     
     if(name == ""){
-        varError.push("you must enter your name")
+        varError.push("Name field can not be bull")
     }
     //console.log(userNameValidation(req.body.username));
     if(username == ""){
-        varError.push("you must enter username")
+        varError.push("Username Field can not be null")
     } 
     else if(!userNameValidation(username))
     {
@@ -95,24 +89,20 @@ router.post('/signup-form',(req,res)=>{
     }
 
     if(email == ""){
-        varError.push("you must enter email")
-    }
-
-    if(address == ""){
-        varError.push("you must enter address")
+        varError.push("Email field can not be null")
     }
 
     // console.log(passwordValidation(Upassword));
     // console.log(Upassword);
 
     if(Upassword == ""){
-        varError.push("you must choose password")
+        varError.push("Password field can not be null")
     } 
     else if(!passwordValidation(Upassword)){
         varError.push('Require that at least one digit appear anywhere in the string')
     }
     if(Cpassword == ""){
-        varError.push("you must enter confirm password")
+        varError.push("Confirm password can not be null")
     }
     if(Upassword !== Cpassword){
         // console.log("not match");
@@ -126,8 +116,53 @@ router.post('/signup-form',(req,res)=>{
     });
     }
     else{
-        res.redirect("/");
+
+        //register successfull
+
+        // using Twilio SendGrid's v3 Node.js Library
+        // https://github.com/sendgrid/sendgrid-nodejs
+        const sgMail = require('@sendgrid/mail');
+
+        sgMail.setApiKey("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");
+        
+        const msg = {
+        to: email,
+        from: 'khushboo.umrigar11@gmail.com',
+        subject: 'Welcome to Amazon family',
+        html:   `<strong>Hi ${name},</strong>
+                <p>Welcome to the amazon family.</p>
+                <p>We are pleased that you joined.<br/> 
+                We make sure that our customer get the best experience and quality products.<br/>
+                We have the number one customer service and we serve our customers with proper guidance. <br/>
+                Hope you find everything good.<br/>
+                For any further queary you can always contact our customer service.
+            </p>
+
+            <p>Here is the information you've provided.
+                <strong>Name: ${name}</strong>
+                <strong>Username: ${username}</strong>
+                <strong>Email: ${email}</strong>
+                <strong>Address: ${address}</strong>
+                //how to add if condition here
+            </p>
+            <p>Cheers, <br/>Amazon Family</p>`,
+        };
+
+        //
+        sgMail.send(msg).then(()=>{
+            res.redirect('/users/dashboard');
+        }).catch(err=>{
+            console.log(`Error: ${err}`);
+            // err will store the error which wil be generated by sendgrid
+        })
     }
-})
+});
+
+// login
+router.get("/dashboard",(req, res)=>{
+    res.render("users/dashboard",{
+        title: "Dashboard"
+    })
+});
 
 module.exports = router;
