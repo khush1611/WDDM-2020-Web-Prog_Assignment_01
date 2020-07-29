@@ -44,11 +44,10 @@ a{ text-decoration: none;}
     border:0;
     border-radius: 0.3em;
     padding: 1em 3em;
+    align-self: center;
 }
 .btn-explore{ color:var(--color-accent); transition: all 0.3s ease-in-out 0s;}
 .btn-explore:hover{ color:var(--color-secondary); }
-
-.btn-add-cart{ padding: .5em 1.5em;}
 
 .transition-all-ease-in-out{
 transition: all 0.7s ease-in-out 0s;
@@ -59,5 +58,7 @@ transition: all 0.7s ease-in-out 0s;
 }
 
 .color-secondary{ color: var(--color-secondary);}
+
+.select-filed{ width: 100%; padding: 1em 2em; border-radius: 0.3em; margin-bottom: 2em ;}
 
 .input_field{ width: 100%; padding: 1em 2em; border-radius: 0.3em; margin-bottom: 2em ;}

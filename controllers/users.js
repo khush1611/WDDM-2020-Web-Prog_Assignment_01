@@ -77,7 +77,7 @@ router.post('/signup-form',(req,res)=>{
     //console.log(form);
     
     if(name == ""){
-        varError.push("Name field can not be bull")
+        varError.push("Name field can not be null")
     }
     //console.log(userNameValidation(req.body.username));
     if(username == ""){

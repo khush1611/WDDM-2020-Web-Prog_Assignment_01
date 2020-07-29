@@ -25,4 +25,35 @@ router.get("/productListing",(req, res)=>{
     })
 });
 
+//create product
+router.get("/createProduct",(req, res)=>{
+    res.render("product/createProduct",{
+        title: "Adding New Product",
+    })
+});
+
+//Product Description
+router.get("/productDescription",(req, res)=>{
+    res.render("product/productDescription",{
+        title: "Product Description",
+    })
+});
+
+//All Product
+router.get("/allProducts",(req, res)=>{
+    res.render("product/allProducts",{
+        title: "All Products",
+    })
+});
+
+//Edit Product
+router.get("/editProduct",(req, res)=>{
+    res.render("product/editProduct",{
+        title: "Edit Products",
+    })
+});
+
+
+
+
 module.exports = router;

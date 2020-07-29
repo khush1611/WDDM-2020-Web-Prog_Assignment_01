@@ -1,0 +1,51 @@
+<section class="section-form">
+    <h2 class="heading text-capitalize text-center">add new product</h2>
+     {{!-- {{#each errorMessages}}
+        <div class="errors">{{this}}</div>
+    {{/each}} --}}
+    <form action="/users/signup-form" class="form-login" method="POST">
+        <div class="form-login__inputbox">
+            <label for="pname" class="text-capitalize">product name</label>
+         <input type="text" id="pname" name="pname" class="form-login__input input_field" placeholder="Enter product name" value="">
+        </div>
+
+         <div class="form-login__inputbox">
+            <label for="price" class="text-capitalize">price</label>
+            <input type="number" id="price" name="price" class="form-login__input input_field" placeholder="Enter price" value="">
+        </div>
+
+        <div class="form-login__inputbox">
+            <label for="description" class="text-capitalize">decription</label>
+            <input type="text" id="description" name="description" class="form-login__input input_field" placeholder="Enter description" value="">
+        </div>
+
+        <div class="form-login__inputbox">
+            <label for="category" class="text-capitalize">category</label>
+                <select id="category" name="category" class="select-filed">
+                    <option value="Home">House Appliance</option>
+                    <option value="Women">Women</option>
+                    <option value="Man">Man</option>
+                    <option value="Kids">Kids</option>
+                </select>
+        </div>
+        <div class="form-login__inputbox">
+            <label for="qty" class="text-capitalize">qty</label>
+            <input type="text" id="qty" name="qty" class="form-login__input input_field" placeholder="Enter quantity" value="">
+        </div>
+
+        <div class="form-login__inputbox">
+            <label for="bestseller" class="text-capitalize">bestseller</label>
+                <select id="bestseller" name="bestseller" class="select-filed">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+        </div>
+
+        <div class="form-login__inputbox">
+            <label for="uploadfile" class="text-capitalize">upload file</label>
+            <input type="file" id="uploadfile" name="uploadfile" class="" value="">
+        </div>
+        
+        <button value="submit" class="button  btn-submit">Submit</button>
+    </form>
+ </section> <!-- section form-->

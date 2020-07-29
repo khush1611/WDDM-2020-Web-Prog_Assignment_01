@@ -16,6 +16,13 @@ router.get("/",(req, res)=>{
     })
 });
 
+//cart
+router.get("/cart",(req, res)=>{
+    res.render("general/cart",{
+        title: "Cart",
+    })
+});
+
 // coming soon
 router.get("/comingsoon",(req, res)=>{
     res.render("general/comingsoon",{
