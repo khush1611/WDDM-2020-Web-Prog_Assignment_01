@@ -3,7 +3,7 @@
      {{!-- {{#each errorMessages}}
         <div class="errors">{{this}}</div>
     {{/each}} --}}
-    <form action="/users/signup-form" class="form-login" method="POST">
+    <form action="/product/createProduct" class="form-login" method="POST" enctype="multipart/form-data">
         <div class="form-login__inputbox">
             <label for="pname" class="text-capitalize">product name</label>
          <input type="text" id="pname" name="pname" class="form-login__input input_field" placeholder="Enter product name" value="">
@@ -36,8 +36,8 @@
         <div class="form-login__inputbox">
             <label for="bestseller" class="text-capitalize">bestseller</label>
                 <select id="bestseller" name="bestseller" class="select-filed">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
         </div>
 

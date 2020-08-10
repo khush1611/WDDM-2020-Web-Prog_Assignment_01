@@ -11,15 +11,17 @@
 --}}    {{#each data}}
             <article class="product">
     
-                <img src="/images/house_interior/sofa/{{this.imgPath}}" alt="computer image" class="product__image">
+                <img src="/images/products/{{this.product_image}}" alt="Product image" class="product__image">
 
-                <h3 class="product__title">{{this.title}}</h3>
+                <h3 class="product__title">{{this.product_name}}</h3>
                 
-                <p class="product__description">{{this.description}}</p>
+                <p class="product__description">{{this.product_description}}</p>
 
-                <p>{{this.price}}</p>
-
-                <button value="submit" class="button btn-add-cart">Add to cart</button>
+                <p>${{this.product_price}}</p>
+                <p>Available Quantity: {{this.product_quantity}}</p>
+                <form action="/product/productDescription/{{this.id}}" method="GET">
+                    <button value="submit" class="button btn-add-cart">View Product</button>
+                </form>
 
             </article> <!-- product section-product__row-->
         {{/each}}

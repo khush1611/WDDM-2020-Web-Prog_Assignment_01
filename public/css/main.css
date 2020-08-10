@@ -68,6 +68,42 @@
 .dasboard-anchor-links{ color:#ffffff}
 .dasboard-anchor-links:hover{color:#ffffff; text-decoration: none;}
 
+.product-listings{
+    margin: 1em auto;
+}
+
+.table-header{
+    background-color: #1976D2;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 1em;
+}
+
+.table-header, .table-row {
+    display: flex;  /* aligns all child elements (flex items) in a row */
+}
+
+.table-row{
+    margin: 0.5em;
+}
+.table-col {
+    flex: 1;        /* distributes space on the line equally among items */
+}
+
+.product-list-header{
+    text-align: center;
+}
+.product-list{
+    border-style: solid;
+    border-color: black;
+    padding: 0.5em;
+    border-width: 0px 1px 1px 1px;
+}
+
+.prod_title{
+    font-size: 1.5em;
+    font-weight: 400;
+}
 /*`````````````````````````````*/
 /*All Product*/
 /*`````````````````````````````*/

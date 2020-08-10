@@ -39,9 +39,19 @@
                     <li><a href="/comingSoon" class="text-capitalize">deal store</a></li>
                     <li><a href="/comingSoon" class="text-capitalize">best sellers</a></li>
                     <li><a href="/product/productListing" class="text-capitalize">products</a></li>
-                    <li><a href="/users/login" class="text-capitalize">login</a></li>
-                    <li><a href="/users/signUp" class="text-capitalize">sign up</a></li>
-                     <li><a href="/cart" class="text-capitalize"><img src="/images/cart.png" alt="cart" class="cart-img"></a></li>
+
+                    {{#if sessioninfo}}
+                        {{#if sessioninfo.user_admin}}
+                            <li class="nav-items" id="nav-items"><a href="/users/dashboard" class="nav-item-links">Dashboard</a></li>
+                        {{/if}}
+                        <li class="nav-items" id="nav-items"><a href="/users/logout" class="nav-item-links">Logout</a></li>
+                    {{else}}
+                        <li><a href="/users/login" class="text-capitalize">Login</a></li>
+                        <li><a href="/users/signUp" class="text-capitalize">Sign up</a></li>
+                    {{/if}}
+
+                    
+                     <li><a href="/product/orderSummary" class="text-capitalize"><img src="/images/cart.png" alt="cart" class="cart-img"></a></li>
                 </ul>
                
                  <section class="section-hamburger">

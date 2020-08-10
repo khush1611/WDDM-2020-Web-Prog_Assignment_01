@@ -1,9 +1,9 @@
 <section class="section-product-table">
-    <h2>All Orders</h2>
+    <h2>All Products</h2>
 <table class="table">
   <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
+      {{!-- <th scope="col">#</th> --}}
       <th scope="col">Photo</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
@@ -15,16 +15,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><img src="/images/house_interior/sofa/sofa_1.jpg" alt="" class="all-order-image"></td>
-      <td>Sofa</td>
-      <td>$ 200</td>
-      <td>Home Appliance</td>
-      <td>4</td>
-      <td>yes</td>
-      <td><a href="/product/editProduct">Edit</a> | <a href="#"> Delete</a></td>
-    </tr>
+    {{#each data}}
+      <tr>
+        {{!-- <th scope="row">1</th> --}}
+        <td><img src="/images/products/{{this.product_image}}" alt="" class="all-order-image"></td>
+        <td>{{this.product_name}}</td>
+        <td>${{this.product_price}}</td>
+        {{!-- <td>{{this.product_description}}</td> --}}
+        <td>{{this.product_category}}</td>
+        <td>{{this.product_quantity}}</td>
+        <td>{{this.product_bestseller}}</td>
+        <td><a href="/product/editProduct/{{this.id}}">Edit</a> | <a href="/product/deleteProduct/{{this.id}}?method=DELETE"> Delete</a></td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>
 

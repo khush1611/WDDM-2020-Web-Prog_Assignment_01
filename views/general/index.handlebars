@@ -10,13 +10,13 @@
     {{#each featuredproducts}}
             <article class="product">
     
-                <img src="/images/house_interior/sofa/{{this.imgPath}}" alt="computer image" class="product__image">
+                <img src="/images/products/{{this.product_image}}" alt="Product Image" class="product__image">
 
-                <h3 class="product__title">{{this.title}}</h3>
+                <h3 class="product__title">{{this.product_name}}</h3>
                 
-                <p class="product__description">{{this.description}}</p>
+                <p class="product__description">{{this.product_description}}</p>
 
-                <p>{{this.price}}</p>
+                <p>{{this.product_price}}</p>
 
                 <button value="submit" class="button btn-add-cart">Add to cart</button>
 

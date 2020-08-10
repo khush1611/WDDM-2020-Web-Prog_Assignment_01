@@ -1,21 +1,66 @@
 <section class="section-dashboard">
-    <h2 class="heading text-capitalize text-center">Welcome back!</h2>
+    <h2 class="heading text-capitalize text-center">Welcome back, {{sessioninfo.user_name}}!</h2>
     <section class="section-dashboard-row row">
-        <article class="dashboard dashboard--1">
-            <a href="/product/allProducts" class="dasboard-anchor-links">All orders</a>
+        {{!-- <article class="dashboard dashboard--1">
+            <a href="/product/allProducts" class="dasboard-anchor-links">All Products</a>
             
-        </article>
+        </article> --}}
 
         <article class="dashboard dashboard--1">
              <a href="/product/createProduct" class="dasboard-anchor-links">Create New Product</a>
         </article>
 
-         <article class="dashboard dashboard--1">
+         {{!-- <article class="dashboard dashboard--1">
              <a href="/product/allProducts" class="dasboard-anchor-links">Edit product</a>
         </article>
 
         <article class="dashboard dashboard--1">
             delivered orders
-        </article>
+        </article> --}}
+    </section>
+
+    <section class="product-listings">
+        <div class="table-header">
+            <div class="table-col product-list-header">Image</div>
+            <div class="table-col product-list-header">Title</div>
+            <div class="table-col product-list-header">Price</div>
+            <div class="table-col product-list-header">Quantity</div>
+            <div class="table-col product-list-header">Category</div>
+            <div class="table-col product-list-header">Is Bestseller</div>
+            <div class="table-col product-list-header">Action</div>
+        </div>
+
+        {{#each products}}
+
+            <div class="table-row">
+                
+                <div class="table-col prod-list">
+                    <img src="/images/products/{{this.product_image}}" alt="Product Image" class="product__image">
+                </div>
+                <div class="table-col prod-list">
+                    <h3 class="prod_title">{{this.product_name}}</h3>
+                </div>
+                <div class="table-col prod-list">
+                    <h3 class="prod_title">{{this.product_price}}</h3>
+                </div>
+                 <div class="table-col prod-list">
+                    <h3 class="prod_title">{{this.product_quantity}}</h3>
+                </div>
+                <div class="table-col prod-list">
+                    <h3 class="prod_title">{{this.product_category}}</h3>
+                </div>               
+                <div class="table-col prod-list">
+                    <h3 class="prod_title">{{this.product_bestseller}}</h3>
+                </div>
+                <div class="table-col prod-list">
+                    <h3 class="prod_title"><a href="/product/editProduct/{{this.id}}">Edit</a> | <a href="/product/deleteProduct/{{this.id}}?method=DELETE"> Delete</a></h3>
+                </div>
+            </div>
+            {{else}}
+                <div class="table-col prod-list product-list-header">
+                    <h3 class="prod_title">No products added</h3>
+                </div>
+        {{/each}}
+
     </section>
 </section>

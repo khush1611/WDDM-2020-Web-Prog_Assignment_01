@@ -3,32 +3,35 @@
 
      <section class="cart">
 
+        {{#each cartProducts}}
+
             <article class="product product-cart row">
                 <div class="section-product-image">
-                    <img src="/images/cart.png" alt="product image" class="product__image">
+                    <img src="/images/products/{{this.product_image}}" alt="product" class="product__image">
                 </div>
                 
                 <div class="section-product-description">
-                    <p><strong>Household sofa for drawing room</strong></p>
-                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, voluptatibus</p>
-                    <p class="cart-price">CDN$ 19.9</p>
-                    <p class="instock">In Stock</p>
-                    <p class="qty"><strong>Quanity:</strong> 8</p>
+                    <p><strong>{{this.product_name}}</strong></p>
+                    {{!-- <p class="product-description">{{this.product_name}}</p> --}}
+                    <p class="cart-price">CDN$ {{this.product_price}}</p>
                 </div>
 
                 <div class="order-summary">
                     <strong>Order Summary</strong>
 
                     <div class="row">
-                        <p>Items (12)</p>
-                        <p>CDN$ 230</p>
+                        <p>Items ({{this.product_quantity}})</p>
+                        <p>CDN$ {{this.product_total}}</p>
                     </div>
                 </div>
             </article> <!-- product section-product__row-->
+        {{/each}}
 
             <article class="product row">
                 <div class="section-product-button">
-                     <button value="submit" class="button btn-add-cart">Place Order</button>
+                    <form action="/product/placeorder" method="POST">
+                        <button value="submit" class="button btn-add-cart">Place Order</button>
+                    </form>
                 </div>
                 
                 <div class="section-product-description">
@@ -36,7 +39,7 @@
                 </div>
 
                 <div class="order-summary">
-                     <p class="cart-price">CDN$ 500</p>
+                     <p class="cart-price">CDN$ {{this.cartTotal}}</p>
                 </div>
             </article> <!-- product section-product__row-->
     </section> <!-- row-->

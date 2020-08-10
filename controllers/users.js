@@ -1,5 +1,13 @@
 const express =  require("express");
 const router = express.Router();
+const bcrypt= require('bcryptjs');
+
+
+const userModel = require("../models/user");
+const productModel = require("../models/product");
+const isAuthenticated = require("../middleware/auth");
+const dashBoardLoader = require("../middleware/authorization");
+
 
 //fucntions for server-side validations
 //https://www.regextester.com/104030
@@ -50,7 +58,104 @@ router.post('/login-form',(req,res)=>{
         });
     }
     else{
-        res.redirect("/users/dashboard");
+
+    userModel.findOne({user_username:username})
+    .then((user)=>{
+
+        if(user == null)
+        {
+            varError.push("User not found. Check your login credentials")
+            res.render("users/login", {
+                title: "login",
+                errorMessages: varError
+            });
+        }
+        else
+        {
+            // console.log(`User found : ${user}`);
+            //compare password 
+            //https://medium.com/javascript-in-plain-english/how-bcryptjs-works-90ef4cb85bf4
+            bcrypt.compare(Upassword, user.user_password)
+            .then(isEqual=>{
+
+                if(isEqual)
+                {
+                    req.session.userInfo = user;
+
+                    //check if user is admin
+                    if(user.user_admin)
+                    {
+
+                        //All products for this user
+                        productModel.find({product_created_by: user._id})
+                        .then((products)=>{
+
+                            const productsListing = products.map(prod=>{
+                                return{
+                                    id: prod._id,
+                                    product_image:prod.product_image,
+                                    product_name: prod.product_name,
+                                    product_price: prod.product_price,
+                                    product_category: prod.product_category,
+                                    product_quantity: prod.product_quantity,
+                                    product_bestseller: prod.product_bestseller,
+                                    product_description: prod.product_description
+                                }
+                            });
+                            //console.log(productsListing);
+
+                            // res.render("users/dashboard",{
+                            //     title: "Dashboard",
+                            //     errorMessages:"" ,
+                            //     products: productsListing       
+                            // });
+                            res.redirect('/users/dashboard');
+                        })
+                        .catch(err =>{
+                           
+                            errors.push({userValidity:"! Error occurred. Check your login credentials"});
+                            res.render("users/login", {
+                                title: "Login",
+                                errorMessages: errors,
+                                formValues: form
+                            });
+                        });
+                    }
+                    else
+                    {
+                        res.redirect("/product/productListing");
+                    }
+    
+                }
+                else
+                {
+                    res.render("users/login", {
+                        title: "Login",
+                        errorMessages: errors,
+                        formValues: form
+                    });
+                }
+            })
+            .catch(err =>
+                {
+                    console.log(`Password is not matching: ${err}`);
+                    varError.push("Password incorrect. Check your login credentials")
+                    res.render("users/login", {
+                        title: "login",
+                        errorMessages: varError
+                    });
+                });
+        }
+    })
+    .catch(err =>{
+        console.log(`Error happended when pulling data from the Databse: ${err}`);
+        varError.push("Password incorrect. Check your login credentials")
+        res.render("users/login", {
+            title: "login",
+            errorMessages: varError
+        });
+    });
+
     }
 });
 
@@ -118,51 +223,83 @@ router.post('/signup-form',(req,res)=>{
     else{
 
         //register successfull
+        //Add user to db
 
-        // using Twilio SendGrid's v3 Node.js Library
-        // https://github.com/sendgrid/sendgrid-nodejs
-        const sgMail = require('@sendgrid/mail');
+        //get submitted values
+        const newUser = {
+            user_name: req.body.name,
+            user_username: req.body.username,
+            user_email: req.body.email,
+            user_address: req.body.address,
+            user_password: req.body.Upassword
+        }
+        const user = new userModel( newUser);// here it will call pre method fro encryption
 
-        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
-        
-        const msg = {
-        to: email,
-        from: 'khushboo.umrigar11@gmail.com',
-        subject: 'Welcome to Amazon family',
-        html:   `<strong>Hi ${name},</strong>
-                <p>Welcome to the amazon family.</p>
-                <p>We are pleased that you joined.<br/> 
-                We make sure that our customer get the best experience and quality products.<br/>
-                We have the number one customer service and we serve our customers with proper guidance. <br/>
-                Hope you find everything good.<br/>
-                For any further queary you can always contact our customer service.
-            </p>
+        user.save().then(()=>{
+            //if success, send welcome email & redirect to login page
+            // using Twilio SendGrid's v3 Node.js Library
+            // https://github.com/sendgrid/sendgrid-nodejs
+            const sgMail = require('@sendgrid/mail');
 
-            <p>Here is the information you've provided.
-                <strong>Name: ${name}</strong>
-                <strong>Username: ${username}</strong>
-                <strong>Email: ${email}</strong>
-                <strong>Address: ${address}</strong>
-                //how to add if condition here
-            </p>
-            <p>Cheers, <br/>Amazon Family</p>`,
-        };
+            sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+            
+            const msg = {
+            to: email,
+            from: 'khushboo.umrigar11@gmail.com',
+            subject: 'Welcome to Amazon family',
+            html:   `<strong>Hi ${name},</strong>
+                    <p>Welcome to the amazon family.</p>
+                    <p>We are pleased that you joined.<br/> 
+                    We make sure that our customer get the best experience and quality products.<br/>
+                    We have the number one customer service and we serve our customers with proper guidance. <br/>
+                    Hope you find everything good.<br/>
+                    For any further queary you can always contact our customer service.
+                </p>
 
-        //
-        sgMail.send(msg).then(()=>{
-            res.redirect('/users/dashboard');
-        }).catch(err=>{
-            console.log(`Error: ${err}`);
-            // err will store the error which wil be generated by sendgrid
-        })
+                <p>Here is the information you've provided.
+                    <strong>Name: ${name}</strong>
+                    <strong>Username: ${username}</strong>
+                    <strong>Email: ${email}</strong>
+                    <strong>Address: ${address}</strong>
+                    //how to add if condition here
+                </p>
+                <p>Cheers, <br/>Amazon Family</p>`,
+            };
+
+            //
+            sgMail.send(msg).then(()=>{
+
+                res.render("users/login");
+            }).catch(err=>{
+                // console.log(`Error: ${err}`);
+                // err will store the error which wil be generated by sendgrid
+
+                console.log(`Error happended when sending welcome email: ${err}`);
+
+            })
+        }).catch(err =>{
+            console.log(`Error happended when inserting in the Databse: ${err}`);
+        });        
     }
 });
 
-// login
-router.get("/dashboard",(req, res)=>{
-    res.render("users/dashboard",{
-        title: "Dashboard"
-    })
+// Dashboard
+// router.get("/dashboard",(req, res)=>{
+//     res.render("users/dashboard",{
+//         title: "Dashboard"
+//     })
+// });
+
+router.get('/dashboard',isAuthenticated,dashBoardLoader);
+
+
+//logout 
+router.get('/logout',(req,res)=>{
+
+    //destroy the session
+    req.session.destroy();
+
+    res.redirect('/users/login');
 });
 
 module.exports = router;

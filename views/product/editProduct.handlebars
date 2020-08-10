@@ -3,47 +3,47 @@
      {{!-- {{#each errorMessages}}
         <div class="errors">{{this}}</div>
     {{/each}} --}}
-    <form action="/users/signup-form" class="form-login" method="POST">
+    <form action="/product/updateproduct/{{_id}}?method=PUT" class="form-login" method="POST">
         <div class="form-login__inputbox">
             <label for="pname" class="text-capitalize">product name</label>
-         <input type="text" id="pname" name="pname" class="form-login__input input_field" placeholder="Enter product name" value="">
+         <input type="text" id="pname" name="pname" class="form-login__input input_field" placeholder="Enter product name" value="{{product_name}}"">
         </div>
 
          <div class="form-login__inputbox">
             <label for="price" class="text-capitalize">price</label>
-            <input type="number" id="price" name="price" class="form-login__input input_field" placeholder="Enter price" value="">
+            <input type="number" id="price" name="price" class="form-login__input input_field" placeholder="Enter price" value="{{product_price}}">
         </div>
 
         <div class="form-login__inputbox">
             <label for="description" class="text-capitalize">decription</label>
-            <input type="text" id="description" name="description" class="form-login__input input_field" placeholder="Enter description" value="">
+            <input type="text" id="description" name="description" class="form-login__input input_field" placeholder="Enter description" value="{{product_description}}">
         </div>
 
         <div class="form-login__inputbox">
             <label for="category" class="text-capitalize">category</label>
                 <select id="category" name="category" class="select-filed">
-                    <option value="Home">House Appliance</option>
-                    <option value="Women">Women</option>
-                    <option value="Man">Man</option>
+                    <option value="Home" {{#ifeq product_category "Home"}}selected{{/ifeq}}>House Appliance</option>
+                    <option value="Women" {{#ifeq product_category "Women"}}selected{{/ifeq}}>Women</option>
+                    <option value="Man" {{#ifeq product_category "Man"}} selected {{/ifeq}}>Man</option>
                     <option value="Kids">Kids</option>
                 </select>
         </div>
         <div class="form-login__inputbox">
             <label for="qty" class="text-capitalize">qty</label>
-            <input type="text" id="qty" name="qty" class="form-login__input input_field" placeholder="Enter quantity" value="">
+            <input type="text" id="qty" name="qty" class="form-login__input input_field" placeholder="Enter quantity" value="{{product_quantity}}">
         </div>
 
         <div class="form-login__inputbox">
             <label for="bestseller" class="text-capitalize">bestseller</label>
                 <select id="bestseller" name="bestseller" class="select-filed">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value="true" {{#ifeq product_bestseller "true"}}selected{{/ifeq}}>Yes</option>
+                    <option value="false" {{#ifeq product_bestseller "false"}}selected{{/ifeq}}>No</option>
                 </select>
         </div>
 
         <div class="form-login__inputbox">
             <label for="uploadfile" class="text-capitalize">upload file</label>
-            <input type="file" id="uploadfile" name="uploadfile" class="" value="">
+            <input type="file" id="uploadfile" name="uploadfile" class="" value="{{product_image}}">
         </div>
         
         <button value="submit" class="button  btn-submit">Submit</button>
